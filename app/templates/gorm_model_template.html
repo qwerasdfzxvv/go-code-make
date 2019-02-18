@@ -1,0 +1,16 @@
+```go
+    package models
+    {% if has_time_column %}
+    import "time"
+    {% endif %}
+
+    type {{ table_name_cap }} struct {
+    {% for i in ret_list %}
+        {{ i["column_name_cap"] }} {{ i["data_type"] }}     `json:"{{ i["column_name_low"] }}" gorm:"column:{{ i["column_name_low"] }}"`
+    {% endfor %}
+    }
+
+    func (this {{ table_name_cap }}) TableName() string {
+        return "{{ table_name_init }}"
+    }
+```

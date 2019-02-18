@@ -1,0 +1,16 @@
+{% extends "appbuilder/general/model/edit.html" %}
+{% block head_css %}
+    {{ super() }}
+{#    <link rel="stylesheet" href="highlight.css"></link>#}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/highlight.css')}}"></link>
+{% endblock %}
+ {% block edit_form %}
+        {{ super() }}
+      <div class="form-group">
+    <label for="exampleFormControlTextarea1">生成代码</label>
+
+     {{ golang_code|safe }}
+
+  </div>
+ {% endblock %}
+
